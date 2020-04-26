@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="English">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '4VPBZ7LVWM',
+      apiKey: '763f573ace866256db1acd5c757c1e05',
+      indexName: 'prod_blogs',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Abstract:  This article will introduce how to use the Intellij and command to follow squash and rebase to resolve PR feature branch conflictions and make the project git history clean. This operation">
+<meta name="keywords" content="Git,rebase,squash,Intellij">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Squash Rebase PR Git Workflow by Intellij and Command">
+<meta property="og:url" content="https://blog.mengxin.science/2019/12/01/Git_Squash_Rebase_by_Intellij/index.html">
+<meta property="og:site_name" content="Xin&#39;s Blog">
+<meta property="og:description" content="Abstract:  This article will introduce how to use the Intellij and command to follow squash and rebase to resolve PR feature branch conflictions and make the project git history clean. This operation">
+<meta property="og:locale" content="English">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/hard-reset-feat-to-practice-repeatedly.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/initial%20status%20of%20your%20git%20history.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/copy-revision-number-of-starting-point-feat-branch.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/choose-rebase-in-menu.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/setup-rebase-onto-starating-point-feat-branch.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/pick-squash-setting.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/new-commit-message.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/after-squash-rebase-to-feat-root.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/force-push.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/pr-github-pr-still-get-confliction.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/pr-discussion-after-squash-and-force-push.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/select-branch-to-make-graph-clean.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/start-rebase-onto-master-in-graph.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/use-merge-resolve-confliction.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/how-to-resolve-confliction-by-intellij.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/after-resolve-confliction.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/finish-resolve-and-rebase-onto-master.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/force-push-again.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/pr-github-confliction-resolve.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/pr-discussion-after-rebase-master-and--force-push-outdated.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-start-rebase-to-feat-root-new.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-rebase-pick-squash.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-rebase-new-commit-message.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-finish-rebase-squash-to-feat-root-new.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-start-rebase-ont-master-by-sha.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-start-rebase-ont-master-by-sha.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-rebase-onto-master-setting-pick-squash.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-get-confliction.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-resolve-confliction-by-vim.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-after-resolve-operations.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-rebase-master-finish-new-message.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-rebase-master-finish.png">
+<meta property="og:updated_time" content="2020-04-26T20:09:35.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Squash Rebase PR Git Workflow by Intellij and Command">
+<meta name="twitter:description" content="Abstract:  This article will introduce how to use the Intellij and command to follow squash and rebase to resolve PR feature branch conflictions and make the project git history clean. This operation">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/hard-reset-feat-to-practice-repeatedly.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://blog.mengxin.science/2019/12/01/Git_Squash_Rebase_by_Intellij/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Squash Rebase PR Git Workflow by Intellij and Command | Xin's Blog</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=[object Object]"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-40931165-9');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="English">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <a href="https://github.com/xmeng1" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.mengxin.science/2019/12/01/Git_Squash_Rebase_by_Intellij/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xin Meng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar-2.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Squash Rebase PR Git Workflow by Intellij and Command
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-12-01 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-01T00:00:00Z">2019-12-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-04-26 21:09:35" itemprop="dateModified" datetime="2020-04-26T21:09:35+01:00">2020-04-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Knowledge/" itemprop="url" rel="index"><span itemprop="name">Knowledge</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/12/01/Git_Squash_Rebase_by_Intellij/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/01/Git_Squash_Rebase_by_Intellij/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Abstract:  This article will introduce how to use the <strong>Intellij</strong> and <strong>command</strong> to follow squash and rebase to resolve PR feature branch conflictions and make the project git history clean. This operation is used by most Open Source project to improve the collaboration among all the developers.</p>
+<a id="more"></a>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>There are two usages for rebase:</p>
+<ol>
+<li>when you want to <strong>merge feature branch to master</strong> and there are some <strong>conflictions</strong>.</li>
+<li>when you want to <strong>make your feature branch based the lastest master</strong> to <strong>get new supports</strong>. </li>
+</ol>
+<p>We can use merge to get the same result (merge <code>master</code> to <code>feature</code>) but it will mess the git history. So <strong>rebase</strong> is a better solution than <strong>merge</strong> for collaboration in git project which is also used in most of the open-source projects such as GitLab.</p>
+<p>There is one existing <a href="https://blog.carbonfive.com/2017/08/28/always-squash-and-rebase-your-git-commits/" target="_blank" rel="noopener">blog article to discuss the pros and cons</a> of rebased and the pros significantly outweigh the cons, so I suggest to use rebase in your team.</p>
+<p>There is another problem for rebase is the <strong>conflicts should be resolved between the target branch with each commit in current branch</strong>.  So if the feature branch has multiple commits have conflicts with the master branch, you need to resolve multiple times even you have resolved some conflicts in the latest commits of your feature.</p>
+<blockquote>
+<p>For example, there are 3 commits in your feature branch, you first commit has conflicts with the master branch and then you second commit just resolves these conflicts. But if you rebase your feature branch to master directly, you must resolve the conflicts of the first commit even it has been resolved by further commits.</p>
+</blockquote>
+<h2 id="How-to-use-the-code-sample"><a href="#How-to-use-the-code-sample" class="headerlink" title="How to use the code sample"></a>How to use the code sample</h2><p>Before you start to apply this workflow on your real project, I suggest you can use the sample project to practice. </p>
+<p>Sample Project: <a href="https://github.com/xinatcg/git-master" target="_blank" rel="noopener">https://github.com/xinatcg/git-master</a></p>
+<p>You can fork it to your account and clone it to local. Please make sure the status should be as follow to simulate the scenario:</p>
+<ol>
+<li>working on feature branch <code>feat/squash-rebase</code></li>
+<li>has the corresponding PR on GitHub</li>
+<li>master branch is updated by other developers and should be same with <code>checkpoint-master</code></li>
+<li>working feature branch has confliction with the master branch and should be same with  <code>checkpoint-feat</code></li>
+</ol>
+<p>You can hard reset the <code>feat/squash-rebase</code> to <code>checkpoint-feat</code> HEAD to practice repeatedly.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/hard-reset-feat-to-practice-repeatedly.png" alt="hard-reset-feat-to-practice-repeatedly"></p>
+<h2 id="Check-Status"><a href="#Check-Status" class="headerlink" title="Check Status"></a>Check Status</h2><p>After check the current status, we can find that during we are working on our <code>feat\squash-rebase</code> branch, some other developers make some commits to master. Meanwhile, there are some conflicts between the latest <code>master</code> with the <code>feat\squash-rebase</code> branch.</p>
+<p>In the same time, the <code>feat\squash-rebase</code> branch needs some features from the latest master branch such as some utility functions. So rebase my current <code>feat\squash-rebase</code> branch onto the latest <code>master</code> branch is one of the best choices.</p>
+<h2 id="Squash"><a href="#Squash" class="headerlink" title="Squash"></a>Squash</h2><p>To prevent to <strong>resolve several conflicts during rebase process</strong>, we’d better to squash our current <code>feat\squash-rebase</code> branch from multiple commits to a single commit.</p>
+<p>There are two methods to achieve this target:</p>
+<ol>
+<li>Rebase to the starting point of feat branch (the commit checkout the feat branch from the <code>master</code>). During the rebase process, you need to pick first commit and squash all other commits.</li>
+<li><strong>Soft</strong> reset the head to the starting point of feat branch and then make a new commit. </li>
+</ol>
+<p><code>git reset --soft $(git merge-base HEAD master) &amp;&amp; git commit --reuse-message=HEAD@{1}</code></p>
+<p>The command above just keep the first commit message. </p>
+<p>The second method is not good because you need to provide new commit message <code>--reuse-message=xxxx</code> to include all the commits history by yourself. But the first solution the rebase process can handle it for you. So we suggest the first solution.</p>
+<p>Now let me introduce this workflow by using Intellij and Git bash command line.</p>
+<h2 id="Using-Intellij-Rebase-and-Squash"><a href="#Using-Intellij-Rebase-and-Squash" class="headerlink" title="Using Intellij Rebase and Squash"></a>Using Intellij Rebase and Squash</h2><p>We use IntelliJ to process this workflow step by step.</p>
+<h3 id="1-Check-initial-status"><a href="#1-Check-initial-status" class="headerlink" title="1. Check initial status"></a>1. Check initial status</h3><p>Before you start to practice this tutorial, make sure you git status should be as follow: </p>
+<ol>
+<li>feat branch has several commits (<code>feat\squash-rebase</code> at <code>checkpoint-feat</code>)</li>
+<li>master has new commit after feat start point (<code>master</code> at <code>checkpoint-master</code>)</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/initial%20status%20of%20your%20git%20history.png" alt="initial status of your git history"></p>
+<h3 id="2-Copy-revision-commit-of-feat-root"><a href="#2-Copy-revision-commit-of-feat-root" class="headerlink" title="2. Copy revision commit of feat root"></a>2. Copy revision commit of feat root</h3><p>First, we name the starting commit point of feat branch as <strong>feat root</strong> which means the feat branch start from this point on the <code>master</code> branch. It should be a split-off point between feat and master.</p>
+<p>The reason we copy this revision commit number: there is no branch to indicate this commit, so we need to use this number to find the corresponding commit.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/copy-revision-number-of-starting-point-feat-branch.png" alt="copy-revision-number-of-starting-point-feat-branch"></p>
+<h3 id="3-Start-to-rebase-from-the-menu"><a href="#3-Start-to-rebase-from-the-menu" class="headerlink" title="3. Start to rebase from the menu"></a>3. Start to rebase from the menu</h3><p>We can start rebase from the Menu: <strong>VCS-&gt;Git-&gt;Rebase…</strong>.</p>
+<p>The objective of this Rebase is squashing the feat branch and we can know that squash is just one of choice of rebasing process.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/choose-rebase-in-menu.png" alt="choose-rebase-in-menu"></p>
+<h3 id="4-Configure-rebase"><a href="#4-Configure-rebase" class="headerlink" title="4. Configure rebase"></a>4. Configure rebase</h3><p>Before start the interactive rebase process, we need to configure the rebase, there are several important configurations: </p>
+<ol>
+<li><strong>Branch</strong>: this is the current working branch which you want to rebase</li>
+<li><strong>Onto</strong>: this is the target commit/branch you to rebase current branch onto.</li>
+<li><strong>Interactive</strong>: this is the option to enable interactive process</li>
+</ol>
+<p>We should paste the Commit Revision number we copy in Step 2 and click the <strong>Validate</strong> to double-check whether it is the <strong>feat root</strong>. After confirmation, click <strong>Rebase</strong> button to start the interactive process of rebasing.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/setup-rebase-onto-starating-point-feat-branch.png" alt="setup-rebase-onto-starating-point-feat-branch"></p>
+<h3 id="5-Rebase-interactive-process"><a href="#5-Rebase-interactive-process" class="headerlink" title="5. Rebase interactive process"></a>5. Rebase interactive process</h3><p>If you have multiple commits between you <strong>HEAD of the feat branch</strong> and the <strong>onto</strong> commit/branch, you need to configure the action for every commit. We need to set the first commit as <code>pick</code> and all other commits as <code>squash</code>. Then the Git will pick the first commit and squash other commits into this picked commit. By using this method, we can squash multiple commits of the current feat branch into the only one commit.</p>
+<p>After finishing the <strong>Action</strong> configuration for all the commits, click the <strong>Start Rebasing</strong> button to continue.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/pick-squash-setting.png" alt="pick-squash-setting"></p>
+<h3 id="6-New-commit-message"><a href="#6-New-commit-message" class="headerlink" title="6. New commit message"></a>6. New commit message</h3><p>After we squash all the commits into one commit, this step gives us an option to edit the commit message for this single one commit. The default message is a combination of all previous commits message and you can edit it by yourself to describe the current feat branch.</p>
+<p>After finishing the new message, click the <strong>Resume Rebasing</strong> button to continue.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/new-commit-message.png" alt="new-commit-message"></p>
+<h3 id="7-Squash-Rebase-feat-branch-result"><a href="#7-Squash-Rebase-feat-branch-result" class="headerlink" title="7. Squash Rebase feat branch result"></a>7. Squash Rebase feat branch result</h3><p>Because we rebase only one branch from the HEAD to the root of the branch, so there will no conflict in the rebase process. You will get the result directly.</p>
+<p>In the result, we can see the <code>feat/squash-rebase</code> has been changed to one commit from the <strong>feat root</strong>. We can compare it with the <code>checkpoint-feat</code> to see the difference.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/after-squash-rebase-to-feat-root.png" alt="after-squash-rebase-to-feat-root"></p>
+<h3 id="8-Force-push"><a href="#8-Force-push" class="headerlink" title="8. Force push"></a>8. Force push</h3><p>Because the git commit history has been changed, the feat branch will be different from the remote, so you cannot push directly to the remote (get an error). You must force push to remote with your new feat branch.</p>
+<blockquote>
+<p>There are several choices to backup your previous multiple commits feat branches if you are not confident to force push:</p>
+<ol>
+<li>backup in local: create a separate branch with <code>feat/XXXXX-backup</code> before you rebase for the previous multiple commits branch.</li>
+<li>backup in remote: create new feat branch with <code>feat/XXXXXX-new</code> after you rebase and push to remote. So the previous remote branch will be kept. If you have a PR, close it. We can remove the branch when we make sure the new branch works totally. </li>
+</ol>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/force-push.png" alt="force-push"></p>
+<h3 id="9-PR-update"><a href="#9-PR-update" class="headerlink" title="9. PR update"></a>9. PR update</h3><p>If you have the corresponding PR on the GitHub, the PR will be updated. There should be conflicts between your new feat branch with the latest master. Because even we rebase, but we only rebase the feat brach itself, nothing code is changed on the feat branch. The only change is the sum of commits from several to single commit.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/pr-github-pr-still-get-confliction.png" alt="pr-github-pr-still-get-confliction"></p>
+<p>If you have some discussions on the specified code, they will be kept, and the reason is the same: All the code is the same as the previous multiple commits feat branch.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/pr-discussion-after-squash-and-force-push.png" alt="pr-discussion-after-squash-and-force-push"></p>
+<h3 id="10-Make-the-git-graph-log-clean"><a href="#10-Make-the-git-graph-log-clean" class="headerlink" title="10. Make the git graph log clean"></a>10. Make the git graph log clean</h3><p>Before we <strong>Rebase</strong> <strong>feat branch</strong> <strong>onto</strong> the <strong>master</strong>. We’d better make our Intellij git graph log clean to prevent mistake.</p>
+<p>The Intellij graph log supports filter specified branches by clicking: <strong>Branch: All</strong> -&gt; <strong>Select</strong> -&gt; <strong>Input Branch</strong> -&gt; <strong>Command+Enter</strong>.</p>
+<p>In this tutorial, we only need to display the <code>feat/squash-rebase</code> and <code>master</code> branches:</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/select-branch-to-make-graph-clean.png" alt="select-branch-to-make-graph-clean"></p>
+<h3 id="11-Rebase-from-the-graph-log"><a href="#11-Rebase-from-the-graph-log" class="headerlink" title="11. Rebase from the graph log"></a>11. Rebase from the graph log</h3><p>If we want to rebase onto an existing branch, we can use the Git Graph Log context menu to initial the rebase process.</p>
+<p><strong>Right Click the Target branch(master)</strong> -&gt; <strong>Choose Branches</strong> -&gt; <strong>Choose master</strong> -&gt; <strong>Choose Rebase Current onto Selected</strong>.</p>
+<p>Base on the name of the button, we can know that it will rebase your current branch (feat/squash-rebase) onto the selected branch (master).</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/start-rebase-onto-master-in-graph.png" alt="start-rebase-onto-master-in-graph"></p>
+<h3 id="12-Get-Conflict"><a href="#12-Get-Conflict" class="headerlink" title="12. Get Conflict"></a>12. Get Conflict</h3><p>Because we have modified the master code to produce conflict with the feat branch on purpose, so we will get conflict during this rebase process. </p>
+<p>The resolving process is standard Intellij Conflict Resolve Dialog. We use the <strong>Merge</strong>.. to resolve them which is the most flexible tool. If you want to learn more about the Intellij Resolving Conflicts tool check this <a href="https://www.jetbrains.com/help/idea/resolving-conflicts-with-perforce-integration.html" target="_blank" rel="noopener">official document</a> or search by Google.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/use-merge-resolve-confliction.png" alt="use-merge-resolve-confliction"></p>
+<h3 id="13-Resolve-Conflicts-by-merging"><a href="#13-Resolve-Conflicts-by-merging" class="headerlink" title="13. Resolve Conflicts by merging"></a>13. Resolve Conflicts by merging</h3><p>We resolve conflicts by merging to keep all the code in master and our feat branch. This step should be based on your project logic to make sure the code works. You’d better discuss with other developers who made the changes on the master and make the final decision which part code should be kept and which should be removed.</p>
+<p>Here just a demo to merge all of them and keep all changes.</p>
+<p>If you want to learn more about the Intellij Resolving Conflicts tool check this <a href="https://www.jetbrains.com/help/idea/resolving-conflicts.html" target="_blank" rel="noopener">official document</a> or search by Google.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/how-to-resolve-confliction-by-intellij.png" alt="how-to-resolve-confliction-by-intellij"></p>
+<p>After finishing the conflicts resolve, we can click the button <strong>Apply</strong> and continue. Make sure there is no Redline in the resolve dialogue.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/after-resolve-confliction.png" alt="after-resolve-confliction"></p>
+<h3 id="14-Finish-the-rebase-onto-master"><a href="#14-Finish-the-rebase-onto-master" class="headerlink" title="14. Finish the rebase onto master"></a>14. Finish the rebase onto master</h3><p>After the conflicts are resolved, we will find the rebase process is finished. Because there is only one commit in your new feat branch, so the Intellij set it <strong>pick</strong> directly and there is not future configure dialogue (The bash command will display the step even only one commit).</p>
+<p>And you can check the new <code>feat\squash-rebase</code> has been changed to start from the latest master branch.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/finish-resolve-and-rebase-onto-master.png" alt="finish-resolve-and-rebase-onto-master"></p>
+<h3 id="15-Force-push-to-new-feat"><a href="#15-Force-push-to-new-feat" class="headerlink" title="15. Force push to new feat"></a>15. Force push to new feat</h3><p>Same with Step 8, you also need to push to remote by force. The backup options are also the same as Step 8.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/force-push-again.png" alt="force-push-again"></p>
+<h3 id="16-PR-update-and-discussions"><a href="#16-PR-update-and-discussions" class="headerlink" title="16. PR update and discussions"></a>16. PR update and discussions</h3><p>We can check the PR is updated without conflicts because the new feat branch is started from the latest <code>master</code> branch.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/pr-github-confliction-resolve.png" alt="pr-github-confliction-resolve"></p>
+<p>If you have previous discussions on the code, the discussions will be <code>outdated</code> because this time the code is changed when we resolve the conflicts. It is common because we need to update the code based on the discussions usually.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/pr-discussion-after-rebase-master-and--force-push-outdated.png" alt="pr-discussion-after-rebase-master-and--force-push-outdated"></p>
+<h3 id="17-Summary"><a href="#17-Summary" class="headerlink" title="17. Summary"></a>17. Summary</h3><p>Finally, we finish the Squash and Rebase process. Now we recap what scenarios we should use this process:</p>
+<ol>
+<li>When the master is updated and you feature branch want to use some new code in the master branch and continue to work.</li>
+<li>Before you want to merge your feature branch, especially there are conflicts between your branch and master branch.</li>
+</ol>
+<p>For the second scenario, if you <strong>have NOT any conflict</strong> between your feat branch with the master, you can simplify this process without squash you feat branch to the <strong>feat root</strong>, because this process is used to help you resolve the conflict between your branch and master (only resolve one time, not multiple times). You can rebase your feat branch onto the master directly and configure first commit as <code>pick</code> and all others as <code>squash</code>. You will get the same result.</p>
+<h2 id="Git-Bash"><a href="#Git-Bash" class="headerlink" title="Git Bash"></a>Git Bash</h2><p>I’d like to give a quick introduction to the same process by the Git Bash. This will help you to under the git operations under the hood.</p>
+<h3 id="Check-status-and-get-the-revision-number-of-feat-root-SHA"><a href="#Check-status-and-get-the-revision-number-of-feat-root-SHA" class="headerlink" title="Check status and get the revision number of feat root (SHA)"></a>Check status and get the revision number of feat root (SHA)</h3><p>Firstly, use <code>git status</code> to make sure the current branch is your feat branch.</p>
+<p>Then you can use the command below to display the overview of git log graph to find the <strong>feat root</strong>.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --graph --abbrev-commit --decorate --date=relative --all --pretty=oneline</span><br></pre></td></tr></table></figure>
+<p>Then you can use <code>git rebase -i</code> to start the interactive rebase with squash process. There are two methods to initial: </p>
+<ol>
+<li>use the distance of commit <code>git rebase -i HEAD~3</code></li>
+<li>use the SHA of the target commit <code>git rebase -i d3a25d8</code> </li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-start-rebase-to-feat-root-new.png" alt="bash-start-rebase-to-feat-root-new"></p>
+<h3 id="Pick-and-Squash"><a href="#Pick-and-Squash" class="headerlink" title="Pick and Squash"></a>Pick and Squash</h3><p>Same with Intellij, you need to config the Action for every commits in the feat branch. </p>
+<p>This editor is Vim by default, so you should familiar with it. We update the content: keep first commit is <code>pick</code> and other commits change to <code>squash</code>.</p>
+<p>And save and exit by Vim (Esc -&gt; :wp -&gt; Enter)</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-rebase-pick-squash.png" alt="bash-rebase-pick-squash"></p>
+<h3 id="Edit-the-new-commit-message"><a href="#Edit-the-new-commit-message" class="headerlink" title="Edit the new commit message"></a>Edit the new commit message</h3><p>Same with Intellij, you need to edit the new commit message, which is the combination of all commits by default.</p>
+<p>And save and exit by Vim (Esc -&gt; :wp -&gt; Enter)</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-rebase-new-commit-message.png" alt="bash-rebase-new-commit-message"></p>
+<h3 id="Rebase-and-Squash-to-feat-root-finish"><a href="#Rebase-and-Squash-to-feat-root-finish" class="headerlink" title="Rebase and Squash to feat root finish"></a>Rebase and Squash to feat root finish</h3><p>We can check the graph again to see the new feat branch has been changed onto the feat root directly.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-finish-rebase-squash-to-feat-root-new.png" alt="bash-finish-rebase-squash-to-feat-root-new"></p>
+<p>We still need force push to remote:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --force</span><br></pre></td></tr></table></figure>
+<h3 id="Start-to-rebase-new-feat-to-master"><a href="#Start-to-rebase-new-feat-to-master" class="headerlink" title="Start to rebase new feat to master"></a>Start to rebase new feat to master</h3><p>We use the graph to double check current status:</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-start-rebase-ont-master-by-sha.png" alt="bash-start-rebase-ont-master-by-sha"></p>
+<p>And then start to rebase to the master:</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-start-rebase-ont-master-by-sha.png" alt="bash-start-rebase-ont-master-by-sha"></p>
+<h3 id="Use-default-Pick-and-Squash"><a href="#Use-default-Pick-and-Squash" class="headerlink" title="Use default Pick and Squash"></a>Use default Pick and Squash</h3><p>When you use the bash command, even there is only one commit, you also need to edit this configure. And you can just keep the default and save exit the Vim.</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-rebase-onto-master-setting-pick-squash.png" alt="bash-rebase-onto-master-setting-pick-squash"></p>
+<h3 id="Conflicts-occure"><a href="#Conflicts-occure" class="headerlink" title="Conflicts occure"></a>Conflicts occure</h3><p>The Conflicts will be displayed on the command line:</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-get-confliction.png" alt="bash-get-confliction"></p>
+<h3 id="Resolve-the-conflicts"><a href="#Resolve-the-conflicts" class="headerlink" title="Resolve the conflicts"></a>Resolve the conflicts</h3><p>You need to edit the conflict file manually to resolve it. We use the Vim here to keep all the code to resolve it.</p>
+<p>Then save and exit</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-resolve-confliction-by-vim.png" alt="bash-resolve-confliction-by-vim"></p>
+<h3 id="Resolve-operation-by-the-hint"><a href="#Resolve-operation-by-the-hint" class="headerlink" title="Resolve operation by the hint"></a>Resolve operation by the hint</h3><p>You can follow the hint to operate to resolve the conflict.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add rebase/dummy2.md</span><br><span class="line">git status</span><br><span class="line">git rebase --<span class="built_in">continue</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-after-resolve-operations.png" alt="bash-after-resolve-operations"></p>
+<h3 id="Edit-the-new-commit-message-1"><a href="#Edit-the-new-commit-message-1" class="headerlink" title="Edit the new commit message"></a>Edit the new commit message</h3><p>You need to edit the new commit message:</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-rebase-master-finish-new-message.png" alt="bash-rebase-master-finish-new-message"></p>
+<h3 id="Finish-rebase-onto-master"><a href="#Finish-rebase-onto-master" class="headerlink" title="Finish rebase onto master"></a>Finish rebase onto master</h3><p>You will see the feat will be rebased onto the master branch</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/bash-rebase-master-finish.png" alt="bash-rebase-master-finish"></p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
+<li>Introduction the Squash and Rebase by Git commands:<br> <a href="https://blog.carbonfive.com/2017/08/28/always-squash-and-rebase-your-git-commits/" target="_blank" rel="noopener">https://blog.carbonfive.com/2017/08/28/always-squash-and-rebase-your-git-commits/</a></li>
+<li>Suash and rebase into one:<br> <a href="https://www.internalpointers.com/post/squash-commits-into-one-git" target="_blank" rel="noopener">https://www.internalpointers.com/post/squash-commits-into-one-git</a></li>
+<li>Rebase to update PR:<br> <a href="https://www.digitalocean.com/community/tutorials/how-to-rebase-and-update-a-pull-request" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-rebase-and-update-a-pull-request</a></li>
+<li>Git rebase theory:<br> <a href="https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase" target="_blank" rel="noopener">https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase</a></li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag"># Git</a>
+          
+            <a href="/tags/rebase/" rel="tag"># rebase</a>
+          
+            <a href="/tags/squash/" rel="tag"># squash</a>
+          
+            <a href="/tags/Intellij/" rel="tag"># Intellij</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/03/Kotlin_Quick_Reference_For_Java.md/" rel="next" title="Kotlin Quick Reference for Java Developer">
+                <i class="fa fa-chevron-left"></i> Kotlin Quick Reference for Java Developer
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/03/Keyboard_Layouts_Comparison/" rel="prev" title="Keyboard Layouts Comparison(UK,Danish,US)">
+                Keyboard Layouts Comparison(UK,Danish,US) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar-2.jpg" alt="Xin Meng">
+            
+              <p class="site-author-name" itemprop="name">Xin Meng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/xmeng1" title="GitHub &rarr; https://github.com/xmeng1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/xinmeng_1" title="Twitter &rarr; https://twitter.com/xinmeng_1" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://stackoverflow.com/users/2000468/xin-meng" title="StackOverflow &rarr; https://stackoverflow.com/users/2000468/xin-meng" rel="noopener" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-use-the-code-sample"><span class="nav-number">2.</span> <span class="nav-text">How to use the code sample</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Check-Status"><span class="nav-number">3.</span> <span class="nav-text">Check Status</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Squash"><span class="nav-number">4.</span> <span class="nav-text">Squash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-Intellij-Rebase-and-Squash"><span class="nav-number">5.</span> <span class="nav-text">Using Intellij Rebase and Squash</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Check-initial-status"><span class="nav-number">5.1.</span> <span class="nav-text">1. Check initial status</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Copy-revision-commit-of-feat-root"><span class="nav-number">5.2.</span> <span class="nav-text">2. Copy revision commit of feat root</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Start-to-rebase-from-the-menu"><span class="nav-number">5.3.</span> <span class="nav-text">3. Start to rebase from the menu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Configure-rebase"><span class="nav-number">5.4.</span> <span class="nav-text">4. Configure rebase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Rebase-interactive-process"><span class="nav-number">5.5.</span> <span class="nav-text">5. Rebase interactive process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-New-commit-message"><span class="nav-number">5.6.</span> <span class="nav-text">6. New commit message</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Squash-Rebase-feat-branch-result"><span class="nav-number">5.7.</span> <span class="nav-text">7. Squash Rebase feat branch result</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Force-push"><span class="nav-number">5.8.</span> <span class="nav-text">8. Force push</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-PR-update"><span class="nav-number">5.9.</span> <span class="nav-text">9. PR update</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-Make-the-git-graph-log-clean"><span class="nav-number">5.10.</span> <span class="nav-text">10. Make the git graph log clean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-Rebase-from-the-graph-log"><span class="nav-number">5.11.</span> <span class="nav-text">11. Rebase from the graph log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-Get-Conflict"><span class="nav-number">5.12.</span> <span class="nav-text">12. Get Conflict</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-Resolve-Conflicts-by-merging"><span class="nav-number">5.13.</span> <span class="nav-text">13. Resolve Conflicts by merging</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-Finish-the-rebase-onto-master"><span class="nav-number">5.14.</span> <span class="nav-text">14. Finish the rebase onto master</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-Force-push-to-new-feat"><span class="nav-number">5.15.</span> <span class="nav-text">15. Force push to new feat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-PR-update-and-discussions"><span class="nav-number">5.16.</span> <span class="nav-text">16. PR update and discussions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-Summary"><span class="nav-number">5.17.</span> <span class="nav-text">17. Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-Bash"><span class="nav-number">6.</span> <span class="nav-text">Git Bash</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Check-status-and-get-the-revision-number-of-feat-root-SHA"><span class="nav-number">6.1.</span> <span class="nav-text">Check status and get the revision number of feat root (SHA)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pick-and-Squash"><span class="nav-number">6.2.</span> <span class="nav-text">Pick and Squash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Edit-the-new-commit-message"><span class="nav-number">6.3.</span> <span class="nav-text">Edit the new commit message</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rebase-and-Squash-to-feat-root-finish"><span class="nav-number">6.4.</span> <span class="nav-text">Rebase and Squash to feat root finish</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Start-to-rebase-new-feat-to-master"><span class="nav-number">6.5.</span> <span class="nav-text">Start to rebase new feat to master</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-default-Pick-and-Squash"><span class="nav-number">6.6.</span> <span class="nav-text">Use default Pick and Squash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conflicts-occure"><span class="nav-number">6.7.</span> <span class="nav-text">Conflicts occure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resolve-the-conflicts"><span class="nav-number">6.8.</span> <span class="nav-text">Resolve the conflicts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resolve-operation-by-the-hint"><span class="nav-number">6.9.</span> <span class="nav-text">Resolve operation by the hint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Edit-the-new-commit-message-1"><span class="nav-number">6.10.</span> <span class="nav-text">Edit the new commit message</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Finish-rebase-onto-master"><span class="nav-number">6.11.</span> <span class="nav-text">Finish rebase onto master</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xin Meng</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.1"></script>
+
+
+  
+  
+  
+  <script id="dsq-count-scr" src="https://mengxin.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.mengxin.science/2019/12/01/Git_Squash_Rebase_by_Intellij/";
+    this.page.identifier = "2019/12/01/Git_Squash_Rebase_by_Intellij/";
+    this.page.title = 'Squash Rebase PR Git Workflow by Intellij and Command';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mengxin.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/instantsearch.js@2/dist/instantsearch.min.css">
+
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/npm/instantsearch.js@2/dist/instantsearch.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=7.0.1"></script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+  <script>
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 17196,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      
+        background-color: #eee;
+        background-image: linear-gradient(#fcfcfc, #eee);
+        border: 1px solid #d5d5d5;
+        border-radius: 3px;
+      
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      
+        right: 4px;
+        top: 8px;
+      
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1;
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; // Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.readOnly = true;
+        ta.value = code;
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, code.length);
+        ta.readOnly = false;
+        var result = document.execCommand('copy');
+        
+        ta.blur(); // For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+</body>
+</html>

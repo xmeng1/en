@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="English">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '4VPBZ7LVWM',
+      apiKey: '763f573ace866256db1acd5c757c1e05',
+      indexName: 'prod_blogs',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Abstract:  Kotlin quick reference for Java developer.">
+<meta name="keywords" content="Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin Quick Reference for Java Developer">
+<meta property="og:url" content="https://blog.mengxin.science/2019/11/03/Kotlin_Quick_Reference_For_Java.md/index.html">
+<meta property="og:site_name" content="Xin&#39;s Blog">
+<meta property="og:description" content="Abstract:  Kotlin quick reference for Java developer.">
+<meta property="og:locale" content="English">
+<meta property="og:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/Xnip2019-11-03_21-37-25.png">
+<meta property="og:updated_time" content="2020-04-26T20:09:35.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin Quick Reference for Java Developer">
+<meta name="twitter:description" content="Abstract:  Kotlin quick reference for Java developer.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/xmeng1/images/master/images/Xnip2019-11-03_21-37-25.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://blog.mengxin.science/2019/11/03/Kotlin_Quick_Reference_For_Java.md/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Kotlin Quick Reference for Java Developer | Xin's Blog</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=[object Object]"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-40931165-9');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="English">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <a href="https://github.com/xmeng1" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.mengxin.science/2019/11/03/Kotlin_Quick_Reference_For_Java.md/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xin Meng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar-2.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Kotlin Quick Reference for Java Developer
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-11-03 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-03T00:00:00Z">2019-11-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-04-26 21:09:35" itemprop="dateModified" datetime="2020-04-26T21:09:35+01:00">2020-04-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Knowledge/" itemprop="url" rel="index"><span itemprop="name">Knowledge</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/11/03/Kotlin_Quick_Reference_For_Java.md/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/11/03/Kotlin_Quick_Reference_For_Java.md/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Abstract:  Kotlin quick reference for Java developer.</p>
+<a id="more"></a>
+<h1 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h1><p>Unlike Java, Kotlin doesn’t impose any restrictions on the layout and naming of source files: you can put multiple classes in the same file, and choose any directory structure you’re comfortable with.</p>
+<p>However, it’s still a good practice to follow Java’s directory layout, while not hesitating to group multiple classes into the same file if they’re small and related.</p>
+<h1 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h1><p>In Kotlin, there are two keywords to declare a variable:</p>
+<ul>
+<li><code>val</code>  — Immutable reference. A  <code>val</code>  variable can’t be reassigned after initialization and corresponds to a  <code>final</code>  variable in Java.</li>
+<li><code>var</code>  — Mutable reference. The value of such variable can be changed.</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> i = <span class="number">42</span>  <span class="comment">// final variable  </span></span><br><span class="line"><span class="keyword">var</span> j = <span class="number">42</span>  <span class="comment">// mutable variable</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Semicolons in Kotlin are optional.</p>
+</blockquote>
+<p>Kotlin’s variable declaration starts with one of the two keywords above, followed by the variable name. The variable type may come after the name, separated by a colon. Just like Java, Kotlin is a statically typed language, but the compiler is able to determine the type from the context, this is called  <em>type inference</em>:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> hello: String = <span class="string">"Hello"</span>  <span class="comment">// explicit type  </span></span><br><span class="line"><span class="keyword">val</span> hello = <span class="string">"Hello"</span>          <span class="comment">// inferred typeval i = 42   // Int  </span></span><br><span class="line"><span class="keyword">val</span> l = <span class="number">42L</span>  <span class="comment">// Long  </span></span><br><span class="line"><span class="keyword">val</span> d = <span class="number">42.0</span> <span class="comment">// Double  </span></span><br><span class="line"><span class="keyword">val</span> f = <span class="number">42f</span>  <span class="comment">// Float</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Kotlin supports top-level variables, you don’t need to declare them in a class.</p>
+</blockquote>
+<h1 id="Equality"><a href="#Equality" class="headerlink" title="Equality"></a>Equality</h1><p>Unlike Java, Kotlin’s  <code>==</code>  operator compares two objects by calling  <code>equals</code>  under the hood. For reference comparison, you can use the  <code>===</code>  operator instead:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> a = Pair(<span class="string">"key"</span>, <span class="number">42</span>)  </span><br><span class="line"><span class="keyword">val</span> b = Pair(<span class="string">"key"</span>, <span class="number">42</span>)println(a == b)  <span class="comment">// true  </span></span><br><span class="line">println(a === b) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>For values which are represented as primitive types at runtime, the  <code>===</code>  check is equivalent to the  <code>==</code>  check.</p>
+</blockquote>
+<h1 id="Null-Safety"><a href="#Null-Safety" class="headerlink" title="Null Safety"></a>Null Safety</h1><p>The first and most important difference between Kotlin and Java is Kotlin’s explicit support for  <em>nullable types.</em> Putting a question mark after the type name explicitly allows the variable to contains  <code>null</code>:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nickname: String? = <span class="literal">null</span></span><br><span class="line"><span class="keyword">var</span> name: String = <span class="string">"John"</span></span><br><span class="line"></span><br><span class="line">name = <span class="literal">null</span></span><br><span class="line">^ ERROR: <span class="literal">null</span> can not be a value of a non-<span class="literal">null</span> type String.</span><br><span class="line"></span><br><span class="line">nickname = name</span><br><span class="line"></span><br><span class="line">name = nickname</span><br><span class="line">^ ERROR: Type mismatch.</span><br></pre></td></tr></table></figure>
+<p>A type without a question mark denotes that variables of such type can’t store  <code>null</code>  references.</p>
+<p>Thankfully, Kotlin provides useful tools to deal with  <em>nullable types,</em> and  the  <a href="https://kotlinlang.org/docs/reference/null-safety.html#safe-calls" target="_blank" rel="noopener">safe call operator</a>  will soon become your best friend:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// returns null if nickname is null  </span></span><br><span class="line"><span class="keyword">val</span> uppercase = nickname**?.**toUpperCase()</span><br></pre></td></tr></table></figure>
+<p>The safe call operator above pairs extremely well with the  <a href="https://kotlinlang.org/docs/reference/null-safety.html#elvis-operator" target="_blank" rel="noopener">Elvis operator</a>:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// return "unknown" if nickname is null  </span></span><br><span class="line"><span class="keyword">val</span> safe = nickname **?:** <span class="string">"unknown"</span><span class="comment">// return 0 if nickname is null  </span></span><br><span class="line"><span class="keyword">val</span> length = nickname?.length **?:** <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>If you’re missing  <a href="https://docs.oracle.com/javase/10/docs/api/java/lang/NullPointerException.html" target="_blank" rel="noopener">NPE</a>, you can still throw an exception if the value is  <code>null</code>  using the  <a href="https://kotlinlang.org/docs/reference/null-safety.html#the--operator" target="_blank" rel="noopener">not-null assertion operator</a>:</p>
+<p>// throw an NPE if nickname is null<br>val length = nickname<strong>!!.</strong>length</p>
+<h1 id="String-Templates"><a href="#String-Templates" class="headerlink" title="String Templates"></a>String Templates</h1><p>Kotlin allows you to refer to local variables in string literals:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> name = <span class="string">"Kotlin"</span>  </span><br><span class="line"><span class="keyword">val</span> hello = <span class="string">"Hello <span class="variable">$name</span>"</span> <span class="comment">// "Hello Kotlin"</span></span><br></pre></td></tr></table></figure>
+<p>The literal expression is statically checked and you’re not restricted to variable names, you can also use more complex expressions:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">println(<span class="string">"Hello <span class="subst">$&#123;if (array.size &gt; <span class="number">0</span>) array[<span class="number">0</span>] else "foo"&#125;</span>!"</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="Primitive-Types"><a href="#Primitive-Types" class="headerlink" title="Primitive Types"></a>Primitive Types</h1><p>Unlike Java, Kotlin doesn’t distinguish between primitive and wrapper types. You’ll find below the full list of types that correspond to Java primitives:</p>
+<ul>
+<li>Integer types —  <code>Byte</code>,  <code>Short</code>,  <code>Int</code>,  <code>Long</code></li>
+<li>Floating-point types —  <code>Float</code>,  <code>Double</code></li>
+<li>Character type —  <code>Char</code></li>
+<li>Boolean type —  <code>Boolean</code></li>
+</ul>
+<p>Since there’s no straightforward equivalent to Java primitives, you may be concerned about efficiency, right? Don’t worry, the Kotlin compiler will ensure to use the most efficient type where applicable: Kotlin’s  <code>Double</code>  type will be compiled to the Java primitive type  <code>double</code>, unless being used in a  <code>Collection</code>  for example or allowed to be  <code>null</code>.</p>
+<p>Another important difference between Kotlin and Java, is numeric conversions. Kotlin doesn’t automatically convert numbers from one type to another, the conversion must be explicit:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> i = <span class="number">42</span>  </span><br><span class="line"><span class="keyword">val</span> l: <span class="built_in">Long</span> = i  </span><br><span class="line">**^ Error: Type Mismatch**</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://kotlinlang.org/docs/reference/basic-types.html#unsigned-integers" target="_blank" rel="noopener">Unsigned integers</a>  support is coming to Kotlin.</p>
+</blockquote>
+<h1 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h1><p>Unlike Java,  <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html" target="_blank" rel="noopener">arrays</a>  are just classes in Kotlin. Array instances can be created using the  <code>arrayOf</code>,  <code>arrayOfNulls</code>  and  <code>emptyArray</code>  standard library functions:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> integers: Array&lt;<span class="built_in">Int</span>&gt; = arrayOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)  </span><br><span class="line"><span class="keyword">val</span> strings: Array&lt;String?&gt; = arrayOfNulls(<span class="number">10</span>)  </span><br><span class="line"><span class="keyword">val</span> empty: Array&lt;<span class="built_in">Double</span>&gt; = emptyArray()</span><br></pre></td></tr></table></figure>
+<p>Beware that type arguments of <code>Array</code> always become object types: an <code>Array&lt;Int&gt;</code> will compile to <code>java.lang.Integer[]</code> ! To represent an array of primitive types, Kotlin provide separate array classes, one for each primitive type: <code>IntArray</code>, <code>DoubleArray</code>, <code>BooleanArray</code> and so on:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> threeZeros = IntArray(<span class="number">3</span>)  </span><br><span class="line"><span class="keyword">val</span> threeZerosToo = intArrayOf(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)  </span><br><span class="line"><span class="keyword">val</span> threeZerosAgain = arrayOf(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>).toIntArray()</span><br></pre></td></tr></table></figure>
+<h1 id="Enum"><a href="#Enum" class="headerlink" title="Enum"></a>Enum</h1><p>Kotlin’s enums are declared by adding the  <code>enum</code>  keyword in front of the  <code>class</code>  header:</p>
+<h1 id="Root-Type"><a href="#Root-Type" class="headerlink" title="Root Type"></a>Root Type</h1><p>Similar to Java’s  <code>Object</code>, the  <code>Any</code>  type is the supertype of all non-nullable types in Kotlin. Unlike Java,  <code>Any</code>  is also the supertype of primitive types such as  <code>Int</code>:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> i: Any = <span class="number">42</span>     <span class="comment">// automatic boxing  </span></span><br><span class="line"><span class="keyword">val</span> j: Any? = <span class="literal">null</span>  <span class="comment">// nullable</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Under the hood, the  <code>Any</code>  type corresponds to  <code>java.lang.Object</code></p>
+</blockquote>
+<h1 id="Type-Casts"><a href="#Type-Casts" class="headerlink" title="Type Casts"></a>Type Casts</h1><p>The  <code>is</code>  operator checks if an expression is an instance of a type:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sizeOf</span><span class="params">(obj: <span class="type">Any</span>)</span></span>: <span class="built_in">Int</span>? &#123;  </span><br><span class="line">  <span class="keyword">if</span>(obj <span class="keyword">is</span> String) <span class="keyword">return</span> obj.length <span class="comment">// no cast needed!  </span></span><br><span class="line">  <span class="keyword">if</span>(obj <span class="keyword">is</span> Array&lt;*&gt;) <span class="keyword">return</span> obj.size  </span><br><span class="line">  <span class="keyword">if</span>(obj <span class="keyword">is</span> Collection&lt;*&gt;) <span class="keyword">return</span> obj.size  </span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span>  </span><br><span class="line">&#125;<span class="keyword">if</span>(obj !<span class="keyword">is</span> String)   </span><br><span class="line">  print(<span class="string">"<span class="variable">$obj</span> is not a String)</span></span><br></pre></td></tr></table></figure>
+<p>The  <code>as</code>  operator tries to cast a value to a type:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(obj: <span class="type">Any</span>)</span></span> &#123;  </span><br><span class="line">  <span class="keyword">val</span> i = obj <span class="keyword">as</span> <span class="built_in">Int</span> <span class="comment">// may throw ClassCastException!  </span></span><br><span class="line">  ...  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The safe cast operator  <code>as?</code>  tries to cast a value to the specified type and returns  <code>null</code>  if the value doesn’t have the proper type. The safe cast operator pairs extremely well with the Elvis operator:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> stringOrEmpty = obj <span class="keyword">as</span>? String ?: <span class="string">""</span></span><br></pre></td></tr></table></figure>
+<h1 id="Iterating"><a href="#Iterating" class="headerlink" title="Iterating"></a>Iterating</h1><p>Kotlin supports both  <code>while</code>  and  <code>do-while</code>  loops and doesn’t bring anything new to it.</p>
+<p>In Kotlin the  <code>for</code>  loop construct iterates through anything that provides an iterator but, unlike Java, doesn’t support any other form than the well-known  <code>for..in</code>  syntax:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> array = arrayOf(<span class="string">"Kotlin"</span>, <span class="string">"Java"</span>, <span class="string">"Gradle"</span>)  </span><br><span class="line"><span class="keyword">for</span>(s <span class="keyword">in</span> array) println(s)</span><br></pre></td></tr></table></figure>
+<p>To iterate over numbers, instead, Kotlin supports the concept of <a href="https://kotlinlang.org/docs/reference/ranges.html#ranges" target="_blank" rel="noopener"><em>range</em></a>_._ _A_s the name implies, a range is just an interval between two values, usually numbers but not limited to:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// inferred type is IntRange  </span></span><br><span class="line"><span class="keyword">val</span> oneToTen = <span class="number">1</span>..<span class="number">10</span><span class="comment">// inferred type is CharRange  </span></span><br><span class="line"><span class="keyword">val</span> alphabet = <span class="string">'a'</span>..<span class="string">'z'</span><span class="comment">// inclusive  </span></span><br><span class="line"><span class="keyword">for</span>(c **<span class="keyword">in</span>** alphabet)  </span><br><span class="line">  println(<span class="string">"<span class="variable">$c</span>"</span>)<span class="comment">// inclusive  </span></span><br><span class="line"><span class="keyword">for</span>(i **<span class="keyword">in</span>** <span class="number">0</span>..<span class="number">100</span>)  </span><br><span class="line">  println(<span class="string">"<span class="variable">$i</span> of 100"</span>)<span class="comment">// exclusive  </span></span><br><span class="line"><span class="keyword">for</span>(i **<span class="keyword">in</span>** <span class="number">0</span> **until** <span class="number">100</span>)   </span><br><span class="line">  println(<span class="string">"<span class="variable">$i</span> of 99"</span>)<span class="comment">// downward with step  </span></span><br><span class="line"><span class="keyword">for</span> (i **<span class="keyword">in</span>** <span class="number">100</span> **downTo** <span class="number">0</span> **step** <span class="number">2</span>)  </span><br><span class="line">  println(<span class="string">"<span class="variable">$i</span> left down to 0"</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>_until_</code>, <code>_downTo_</code> and <code>_step_</code> are <strong>not</strong> Kotlin keywords but <a href="https://kotlinlang.org/docs/reference/functions.html#infix-notation" target="_blank" rel="noopener">infix</a> extension functions from the standard library (more on this later).</p>
+</blockquote>
+<p>The  <code>..</code>  operator, or  <a href="https://kotlinlang.org/docs/reference/ranges.html#rangeto" target="_blank" rel="noopener">range</a>  operator, when applied to integral types returns an  <code>IntRange</code>  object which is a subclass of  <code>Iterable&lt;Int&gt;</code>  over which the  <code>for</code>  statement iterates. In fact, the  <code>0..100</code>  expression expands to  <code>0.rangeTo(100)</code>  under the hood.</p>
+<p>Working with arrays or collections, using the  <a href="https://kotlinlang.org/docs/reference/multi-declarations.html#destructuring-declarations" target="_blank" rel="noopener">destructuring</a> syntax  along with the  <code>withIndex</code>  standard library function or the  <code>indices</code>  property, you can keep track of the index:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>((index, element) <span class="keyword">in</span> array.withIndex())   </span><br><span class="line">  println(<span class="string">"array[<span class="variable">$index</span>] = <span class="variable">$element</span>"</span>)<span class="keyword">for</span>(index <span class="keyword">in</span> array.indices)  </span><br><span class="line">  println(<span class="string">"array[<span class="variable">$index</span>] = <span class="subst">$&#123;array[index]&#125;</span>"</span>)</span><br></pre></td></tr></table></figure>
+<p>Iterating over a map is also easier thanks to the  <a href="https://kotlinlang.org/docs/reference/multi-declarations.html#destructuring-declarations" target="_blank" rel="noopener">destructuring</a>  syntax:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>((key, value) <span class="keyword">in</span> my_map)  </span><br><span class="line">  println(<span class="string">"map[<span class="variable">$key</span>] = <span class="variable">$value</span>"</span>)</span><br></pre></td></tr></table></figure>
+<p>You can use the  <code>in</code>  operator to check whether a value is in a range, or the opposite:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(c <span class="keyword">in</span> <span class="string">'a'</span>..<span class="string">'z'</span>) &#123;  </span><br><span class="line">  println(<span class="string">"<span class="variable">$c</span> is a lowercase letter"</span>)  </span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>(c !<span class="keyword">in</span> <span class="string">'0'</span>..<span class="string">'9'</span>) &#123;  </span><br><span class="line">  println(<span class="string">"<span class="variable">$c</span> is not a digit"</span>)  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h1><p>Kotlin’s functions declaration starts with the  <code>fun</code>  keyword, followed by the function name and the parameter list in parentheses. The return type comes after the parameter list, separated by a colon:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// block body</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sum</span><span class="params">(a: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span> : <span class="built_in">Int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// expression body, inferred return type</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sum</span><span class="params">(a: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span> = a + b</span><br><span class="line"></span><br><span class="line"><span class="comment">// variable of a function type</span></span><br><span class="line"><span class="keyword">val</span> foo: (<span class="built_in">Int</span>, <span class="built_in">Int</span>) -&gt; <span class="built_in">Int</span> = sum</span><br><span class="line"></span><br><span class="line"><span class="comment">// variable of a nullable function type</span></span><br><span class="line"><span class="keyword">var</span> foo: ((<span class="built_in">Int</span>, <span class="built_in">Int</span>) -&gt; <span class="built_in">Int</span>)? = sum</span><br><span class="line"></span><br><span class="line"><span class="comment">// Unit is Kotlin's void (it is optional)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">hello</span><span class="params">(name: <span class="type">String</span>)</span></span> : <span class="built_in">Unit</span> &#123;</span><br><span class="line">	println(<span class="string">"Hello <span class="variable">$name</span>!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Kotlin supports top level functions; you can declare functions at the top level of a file, you don’t need to put them in a class.</p>
+</blockquote>
+<p>Unlike Java, Kotlin supports default parameters and named arguments:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">join</span><span class="params">(strings: <span class="type">Collection</span>&lt;<span class="type">String</span>&gt;, separator: <span class="type">String</span> = <span class="string">" "</span>, </span></span></span><br><span class="line"><span class="function"><span class="params">         prefix: <span class="type">String</span> = <span class="string">""</span>, postfix: <span class="type">String</span> = <span class="string">""</span>)</span></span> : String</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">val</span> result = StringBuilder(prefix)</span><br><span class="line">  <span class="keyword">for</span>((index, element) <span class="keyword">in</span> strings.withIndex()) &#123;</span><br><span class="line">    <span class="keyword">if</span>(index &gt; <span class="number">0</span>) result.append(separator)</span><br><span class="line">    result.append(element)</span><br><span class="line">  &#125;</span><br><span class="line">  result.append(postfix)</span><br><span class="line">  <span class="keyword">return</span> result.toString()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">join(list)</span><br><span class="line">join(list, separator = <span class="string">","</span>)</span><br><span class="line">join(list, prefix = <span class="string">"("</span>, postfix = <span class="string">")"</span>)</span><br></pre></td></tr></table></figure>
+<p>Kotlin’s functions can accept an arbitrary number of argument using the  <code>vararg</code>  keyword, which pairs extremely well with the spread operator:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">hello</span><span class="params">(<span class="keyword">vararg</span> values: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">  <span class="keyword">for</span>(value <span class="keyword">in</span> values) println(<span class="string">"Hello <span class="variable">$value</span>!"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">hello(<span class="string">"Kotlin"</span>, <span class="string">"Java"</span>, <span class="string">"Groovy"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// calls using the spread operator</span></span><br><span class="line"><span class="keyword">val</span> names = arrayOf(<span class="string">"Java"</span>, <span class="string">"Groovy"</span>)</span><br><span class="line">hello(*names)</span><br><span class="line">hello(<span class="string">"Kotlin"</span>, *names)</span><br></pre></td></tr></table></figure>
+<h1 id="Extension-Functions"><a href="#Extension-Functions" class="headerlink" title="Extension Functions"></a>Extension Functions</h1><p>An extension function is a function that can be called as a member of a class, but is defined outside of it:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> strings</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> String.<span class="title">last</span><span class="params">()</span></span>: <span class="built_in">Char</span> = <span class="keyword">get</span>(length - <span class="number">1</span>)  </span><br><span class="line"><span class="function"><span class="keyword">fun</span> String.<span class="title">isYelling</span><span class="params">()</span></span>: <span class="built_in">Boolean</span> = last() == <span class="string">'!'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// extension for nullable type  </span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> String?.<span class="title">isNull</span><span class="params">()</span></span>: <span class="built_in">Boolean</span> = <span class="keyword">this</span> == <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+<p>Extension functions do not have access to private or protected members of the receiver class and doesn’t automatically become available across your entire project, it needs to be imported just like any other class or function:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> strings.last  </span><br><span class="line"><span class="keyword">import</span> strings.isYelling  </span><br><span class="line"><span class="comment">// or  </span></span><br><span class="line"><span class="keyword">import</span> strings.*<span class="keyword">val</span> c = <span class="string">"Kotlin"</span>.last()  </span><br><span class="line"><span class="keyword">val</span> b = <span class="string">"Java!"</span>.isYelling()<span class="keyword">val</span> s: String? = <span class="literal">null</span>  </span><br><span class="line"><span class="keyword">val</span> ok = s.isNull()    <span class="comment">// no safe call needed!</span></span><br></pre></td></tr></table></figure>
+<p>You must be aware that extension functions behavior is slightly different from member functions:</p>
+<ul>
+<li>Member functions  <strong>always</strong>  take precedence if they share the same signature.</li>
+<li>Extension functions resolve to the  <strong>declared</strong>  <strong>static</strong>  <strong>type</strong>  of the variable, not to the runtime type of the value:</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> Any.<span class="title">yell</span><span class="params">()</span></span> = println(<span class="string">"Any!"</span>)  </span><br><span class="line"><span class="function"><span class="keyword">fun</span> String.<span class="title">yell</span><span class="params">()</span></span> = println(<span class="string">"String!"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> str : String = <span class="string">"Hello"</span>  </span><br><span class="line"><span class="keyword">val</span> obj : Any = str</span><br><span class="line"></span><br><span class="line">str.yell() <span class="comment">// String!  </span></span><br><span class="line">obj.yell() <span class="comment">// Any!</span></span><br></pre></td></tr></table></figure>
+<h1 id="Infix-Functions"><a href="#Infix-Functions" class="headerlink" title="Infix Functions"></a>Infix Functions</h1><p>Functions marked with the  <code>[infix](https://kotlinlang.org/docs/reference/functions.html#infix-notation)</code>  keyword can also be called by omitting the dot and the parentheses:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Price</span></span>(<span class="keyword">val</span> value: <span class="built_in">Double</span>, <span class="keyword">val</span> currency: Currency)</span><br><span class="line"></span><br><span class="line"><span class="keyword">infix</span> <span class="function"><span class="keyword">fun</span> <span class="built_in">Int</span>.<span class="title">euro</span><span class="params">(cents: <span class="type">Int</span>)</span></span>: Price &#123;</span><br><span class="line">  <span class="keyword">return</span> Price(toDouble() + cents / <span class="number">100.0</span>, Currency.EURO)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> price = <span class="number">1</span> euro <span class="number">42</span></span><br><span class="line"><span class="comment">// equivalent to:</span></span><br><span class="line"><span class="keyword">val</span> price = <span class="number">1</span>.euro(<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
+<p>Kotlin’s standard library already provides a few infix functions, not to be confused with keywords:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// until and step are infix functions</span></span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">0</span> until <span class="number">100</span> step <span class="number">2</span>) println(<span class="string">"<span class="variable">$i</span>"</span>)</span><br><span class="line"><span class="comment">// equivalent to:</span></span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">0</span>.until(<span class="number">100</span>).step(<span class="number">2</span>)) println(<span class="string">"<span class="variable">$i</span>"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// downTo is an infix function</span></span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">100</span> downTo <span class="number">0</span>) println(<span class="string">"<span class="variable">$i</span>"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// shl, and, xor are infix functions</span></span><br><span class="line"><span class="keyword">val</span> i = (<span class="number">0x65acf9</span> shl <span class="number">6</span>) and <span class="number">0x55</span> xor <span class="number">0x80</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>infix</code>  functions must be member functions or extension functions, and declare a single parameter with no default value.</p>
+</blockquote>
+<h1 id="Lambdas"><a href="#Lambdas" class="headerlink" title="Lambdas"></a>Lambdas</h1><p>In Kotlin, a lambda is always surrounded with curly braces and the arrow separates the argument list from the body. When passed as the last or only argument to a function, more concise constructs are possible:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Classic  </span></span><br><span class="line">people.filter(&#123; p: Person -&gt; p.age &lt; <span class="number">18</span> &#125;)</span><br><span class="line"><span class="comment">// Lambda as last argument can be moved out of parentheses!  </span></span><br><span class="line">people.filter() &#123; p: Person -&gt; p.age &lt; <span class="number">18</span>&#125;  </span><br><span class="line">   </span><br><span class="line"><span class="comment">// Lambda as the only argument? You can remove parentheses!  </span></span><br><span class="line">people.filter &#123; p: Person -&gt; p.age &lt; <span class="number">18</span> &#125; </span><br><span class="line"><span class="comment">// Inferred parameter type  </span></span><br><span class="line">people.filter &#123; p -&gt; p.age &lt; <span class="number">18</span> &#125; </span><br><span class="line"><span class="comment">// Using the default parameter name  </span></span><br><span class="line">people.filter &#123; it.age &lt; <span class="number">18</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>Unlike Java, you can access non-final variables and even modify them:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> empty = <span class="number">0</span></span><br><span class="line">strings.forEach &#123; element -&gt; <span class="keyword">if</span>(element.isEmpty()) empty++ &#125;</span><br></pre></td></tr></table></figure>
+<p>Similar to how extension functions works, you can also declare the receiver of a lambda by prefixing its declaration with the type of the receiver:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">buildString</span><span class="params">(action: <span class="type">StringBuilder</span>.()</span></span> -&gt; <span class="built_in">Unit</span>) : String &#123;</span><br><span class="line">  <span class="keyword">val</span> sb = StringBuilder()</span><br><span class="line">  sb.action()</span><br><span class="line">  <span class="keyword">return</span> sb.toString()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// inside the lambda, `this` refer to the StringBuilder</span></span><br><span class="line"><span class="keyword">val</span> s = buildString &#123;</span><br><span class="line">  append(<span class="string">"Hello!"</span>)</span><br><span class="line">  append(<span class="string">"How are you?"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The  <code>buildString</code>  helper above could be implemented using the Kotlin’s standard library  <code>[with](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/with.html)</code>  function, which also makes use of lambdas with receiver:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> s = with(StringBuilder()) &#123;</span><br><span class="line">  append(<span class="string">"Hello!"</span>)</span><br><span class="line">  append(<span class="string">"How are you?"</span>)</span><br><span class="line">  toString() <span class="comment">// implicit return value</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Inline-Functions"><a href="#Inline-Functions" class="headerlink" title="Inline Functions"></a>Inline Functions</h1><p>Functions declared with the  <code>inline</code>  modifier are directly substituted into places where the function is called instead of being invoked:<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="title">greeter</span><span class="params">(action: ()</span></span> -&gt; <span class="built_in">Unit</span>) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    println(<span class="string">"Hello!"</span>)</span><br><span class="line">    action()</span><br><span class="line">  &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    println(<span class="string">"Goodbye!"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greeter &#123;</span><br><span class="line">  println(<span class="string">"How are you?"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// directly expands to:</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  println(<span class="string">"Hello!"</span>)</span><br><span class="line">  println(<span class="string">"How are you?"</span>)</span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">  println(<span class="string">"Goodbye!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>As a side effect, a bare  <code>return</code>  statement in a lambda called from an  <code>inline</code>  function will return from the enclosing function:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Kotlin's standard library extension</span></span><br><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> Array<span class="type">&lt;String&gt;</span>.<span class="title">forEach</span><span class="params">(action: (<span class="type">String</span>)</span></span> -&gt; <span class="built_in">Unit</span>) &#123;</span><br><span class="line">  <span class="keyword">for</span>(str <span class="keyword">in</span> <span class="keyword">this</span>) &#123;</span><br><span class="line">    action(str)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> list = listOf(<span class="string">"Kotlin"</span>, <span class="string">"Java"</span>, <span class="string">"Groovy"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// a bare return statement in a lambda called from </span></span><br><span class="line"><span class="comment">// an inline function return from the enclosing function.</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  list.forEach &#123;</span><br><span class="line">    println(it)</span><br><span class="line">    <span class="keyword">if</span>(it == <span class="string">"Kotlin"</span>) <span class="keyword">return</span>  <span class="comment">// return from main !</span></span><br><span class="line">  &#125;</span><br><span class="line">  println(<span class="string">"never reached"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// because it expands to:</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">for</span>(str <span class="keyword">in</span> list) &#123;</span><br><span class="line">    println(str)</span><br><span class="line">    <span class="keyword">if</span>(str == <span class="string">"Kotlin"</span>) <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  println(<span class="string">"never reached"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Instead, you can use returns with labels:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="string">"Kotlin"</span>, <span class="string">""</span>, <span class="string">"Java"</span>, <span class="string">"Groovy"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">  list.forEach &#123;</span><br><span class="line">    <span class="keyword">if</span>(it.isNullOrEmpty()) <span class="keyword">return</span><span class="symbol">@forEach</span>  <span class="comment">// return with implicit label</span></span><br><span class="line">    println(it)    </span><br><span class="line">  &#125;</span><br><span class="line">  println(<span class="string">"Done!"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// equivalent to:</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  list.forEach <span class="symbol">there@</span>&#123; str -&gt; </span><br><span class="line">    <span class="keyword">if</span>(it.isNullOrEmpty()) <span class="keyword">return</span><span class="symbol">@there</span>  <span class="comment">// return with explicit label</span></span><br><span class="line">    println(str)</span><br><span class="line">  &#125;</span><br><span class="line">  println(<span class="string">"Done!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="When"><a href="#When" class="headerlink" title="When"></a>When</h1><p>The  <code>[when](https://kotlinlang.org/docs/reference/control-flow.html#when-expression)</code>  construct may look a lot like the  <code>switch</code>  statement, but it is more powerful:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// when is an expression, not a statement!</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">symbolOf</span><span class="params">(currency: <span class="type">Currency</span>)</span></span> : String &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">when</span>(currency) &#123;</span><br><span class="line">    Currency.USD -&gt; <span class="string">"$"</span></span><br><span class="line">    Currency.EUR -&gt; <span class="string">"€"</span></span><br><span class="line">    Currency.GBP -&gt; <span class="string">"£"</span></span><br><span class="line">    Currency.BTC -&gt; <span class="string">"₿"</span></span><br><span class="line">    Currency.ETH -&gt; <span class="string">"⧫"</span></span><br><span class="line">    <span class="keyword">else</span> -&gt; &#123;</span><br><span class="line">      log(<span class="string">"warning: unknown symbol"</span>)</span><br><span class="line">      <span class="string">"?"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// multiple cases</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> Currency.<span class="title">isCrypto</span><span class="params">()</span></span> = <span class="keyword">when</span>(<span class="keyword">this</span>) &#123;</span><br><span class="line">  Currency.BTC, Currency.ETH -&gt; <span class="literal">true</span></span><br><span class="line">  <span class="keyword">else</span> -&gt; <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> Currency.<span class="title">isFiat</span><span class="params">()</span></span> = !isCrypto()</span><br><span class="line"></span><br><span class="line"><span class="comment">// when without an argument</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">canTransfer</span><span class="params">(source: <span class="type">Currency</span>, destination: <span class="type">Currency</span>)</span></span> = <span class="keyword">when</span> &#123;</span><br><span class="line">  source.isCrypto() &amp;&amp; destination.isCrypto() -&gt; <span class="literal">true</span></span><br><span class="line">  source.isFiat() &amp;&amp; destination.isFiat() -&gt; <span class="literal">true</span></span><br><span class="line">  <span class="keyword">else</span> -&gt; <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Arbitrary expressions can be used as branch conditions:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">when</span>(x) &#123;</span><br><span class="line">  <span class="number">42</span> -&gt; print(<span class="string">"the answer"</span>)</span><br><span class="line">  <span class="number">0xbadbabe</span>, <span class="number">0xbadface</span> -&gt; print(<span class="string">"l33t s534k!"</span>)</span><br><span class="line">  <span class="keyword">is</span> String -&gt; print(<span class="string">"$[x.toUpperCase()]"</span>)</span><br><span class="line">  <span class="keyword">in</span> <span class="number">0</span>..<span class="number">10</span> -&gt; print(<span class="string">"0 ≤ x ≤ 10"</span>)</span><br><span class="line">  !<span class="keyword">in</span> <span class="number">6</span>..<span class="number">9</span> -&gt; print(<span class="string">"x &lt; 6 and x &gt; 9"</span>)</span><br><span class="line">  parseInt(<span class="string">"0xcafe"</span>) -&gt; print(<span class="string">"no sugar please"</span>)</span><br><span class="line">  <span class="keyword">else</span> -&gt; print(<span class="string">"?"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>If you have complex statement for branch, can just use like that:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> v1:String = <span class="string">"good"</span></span><br><span class="line"><span class="keyword">when</span> &#123;</span><br><span class="line">	v1.contains(<span class="string">"good"</span>) -&gt; println(v1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h1><p>Use the  <code>throw</code>  exception to throw an exception object, but remember there’s no  <code>new</code>  keyword in Kotlin:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">throw</span> Exception(<span class="string">"Oops!"</span>)</span><br></pre></td></tr></table></figure>
+<p>The  <code>try..catch</code>  block is now an expression:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// the returned value is the last expression of the try or catch block</span></span><br><span class="line"><span class="keyword">val</span> a: <span class="built_in">Int</span>? = <span class="keyword">try</span> &#123; parseInt(input) &#125; <span class="keyword">catch</span> (e: NumberFormatException) &#123; <span class="literal">null</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">printNumber</span><span class="params">(reader: <span class="type">BufferedReader</span>)</span></span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">val</span> number = <span class="keyword">try</span> &#123; </span><br><span class="line">    parseInt(reader.readLine())</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e: NumberFormatException) &#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  println(number)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In Kotlin, all exceptions are unchecked, meaning that the compiler doesn’t force you to catch any of them:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java would requires us to catch IOException here  </span></span><br><span class="line">bufferedReader.close()</span><br></pre></td></tr></table></figure>
+<h1 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h1><p>Like Java, classes in Kotlin are declared using the  <code>class</code>  keyword, but curly braces are optional if there’s no body. Unlike Java,  Kotlin doesn’t have a <code>new</code> keyword:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Empty</span>  </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123; ... &#125; </span><br><span class="line"><span class="keyword">val</span> p = Person()</span><br></pre></td></tr></table></figure>
+<h2 id="Constructors"><a href="#Constructors" class="headerlink" title="Constructors"></a>Constructors</h2><p>A class in Kotlin can have a single primary  <a href="https://kotlinlang.org/docs/reference/classes.html#constructors" target="_blank" rel="noopener">constructor</a>, and one (or more) secondary constructors.  The primary constructor goes after the class name:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Primary constructor declaration</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">constructor</span></span>(name: String) &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// The constructor keyword can be omitted if there's </span></span><br><span class="line"><span class="comment">// no visibility modifiers nor any annotations</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(name: String) &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Property initialization</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(_firstName: String, _lastName: String) &#123;</span><br><span class="line">  <span class="keyword">val</span> firstName = _firstName.capitalize()</span><br><span class="line">  <span class="keyword">val</span> lastName = _lastName.capitalize()</span><br><span class="line">  <span class="keyword">val</span> fullName: String</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">init</span> &#123; <span class="comment">// using initializer blocks</span></span><br><span class="line">    fullName = <span class="string">"<span class="variable">$firstName</span> <span class="variable">$lastName</span>"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// You can declare properties in the primary constructor</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">val</span> firstName: String, <span class="keyword">val</span> lastName: String, <span class="keyword">var</span> age: <span class="built_in">Int</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Kotlin supports default arguments</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">val</span> firstName: String = <span class="string">"John"</span>, <span class="keyword">val</span> lastName: String = <span class="string">"Doe"</span>)</span><br></pre></td></tr></table></figure>
+<p>Secondary constructors are declared in the class body using the  <code>constructor</code>  keyword:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">val</span> name: String) &#123;</span><br><span class="line">  <span class="comment">// secondary constructors must delegate to the primary constructor</span></span><br><span class="line">  <span class="keyword">constructor</span>(name: String, parent: Person) : <span class="keyword">this</span>(name) &#123;</span><br><span class="line">    parent.children.add(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">init</span> &#123;</span><br><span class="line">    println(<span class="string">"I'm called before the secondary constructor"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Inheritance"><a href="#Inheritance" class="headerlink" title="Inheritance"></a>Inheritance</h2><p>Kotlin’s common superclass is  <code>Any</code>, that’s also the default for a class with no supertypes declared. To declare an explicit supertype, place the type after a colon in the class header:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// the base class primary constructor must be called (if any)  </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived</span></span>(p: <span class="built_in">Int</span>) : Base(p)</span><br><span class="line"><span class="comment">// multiple supertypes are separated by a comma  </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived</span>: <span class="type">Base</span></span>(), Listener</span><br></pre></td></tr></table></figure>
+<h2 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h2><p>As you may have noticed above, properties in Kotlin can be declared as mutable using the  <code>var</code>  keyword, or immutable using  <code>val</code>, and can also be declared using the primary constructor:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;  </span><br><span class="line">  <span class="keyword">var</span> x: <span class="built_in">Double</span>  </span><br><span class="line">  <span class="keyword">var</span> y: <span class="built_in">Double</span>  </span><br><span class="line">&#125;<span class="comment">// equivalent to</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span></span>(<span class="keyword">var</span> x: <span class="built_in">Double</span>, <span class="keyword">var</span> y: <span class="built_in">Double</span>)</span><br></pre></td></tr></table></figure>
+<p>Properties in Kotlin can have getters and setters, also known as custom accessors:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// custom getter on an immutable property (no setter allowed)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">val</span> name: String, <span class="keyword">val</span> birthday: LocalDate) &#123;</span><br><span class="line">  <span class="keyword">val</span> age: <span class="built_in">Long</span></span><br><span class="line">    <span class="keyword">get</span>() = birthday.until(LocalDate.now(), ChronoUnit.YEARS)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// custom setter</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Contact</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> firstName: String? = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">set</span>(value) &#123;</span><br><span class="line">      field = value?.capitalize()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// private setter on a public property</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CharacterCounter</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> count: <span class="built_in">Int</span> = <span class="number">0</span> </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">set</span></span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">add</span><span class="params">(str: <span class="type">String</span>)</span></span> = count += str.length</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Using the  <code>by</code>  keyword, properties can be delegated to an instance through the  <code>setValue</code>  and  <code>getValue</code>  operator:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Capitalizer</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> value: String? = <span class="literal">null</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">getValue</span><span class="params">(thisRef: <span class="type">Any</span>?, property: <span class="type">KProperty</span>&lt;*&gt;)</span></span>: String? &#123;</span><br><span class="line">      <span class="keyword">return</span> value</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">setValue</span><span class="params">(thisRef: <span class="type">Any</span>?, property: <span class="type">KProperty</span>&lt;*&gt;, value: <span class="type">String</span>?)</span></span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.value = value?.capitalize()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> firstName <span class="keyword">by</span> Capitalizer()</span><br><span class="line">  <span class="keyword">var</span> lastName <span class="keyword">by</span> Capitalizer()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The Kotlin standard library provides the  <a href="https://kotlinlang.org/docs/reference/delegated-properties.html#lazy" target="_blank" rel="noopener">lazy</a>  function that takes a lambda and returns an instance of  <code>Lazy&lt;T&gt;</code>  and can serve as a delegate:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DeepThought</span> </span>&#123;</span><br><span class="line">  <span class="keyword">val</span> answer: String <span class="keyword">by</span> lazy &#123;</span><br><span class="line">    sleep(<span class="number">7_500_000</span>, ChronoUnit.YEARS)</span><br><span class="line">    <span class="string">"42"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>As a convenience, Kotlin also provides the  <code>lateinit</code>  modifier to leave non-null properties un-initialized:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Presenter</span> </span>&#123;</span><br><span class="line">  <span class="keyword">lateinit</span> <span class="keyword">var</span> view: View</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">setup</span><span class="params">(_view: <span class="type">View</span>)</span></span> &#123;</span><br><span class="line">    <span class="comment">// ensure the lateinit var hasn't been initialized</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>::view.isInitialized) <span class="keyword">throw</span> IllegalStateException()</span><br><span class="line">    view = _view</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Access-Modifiers"><a href="#Access-Modifiers" class="headerlink" title="Access Modifiers"></a>Access Modifiers</h2><p>Unlike Java, Kotlin’s default modifiers are  <code>public</code>  and  <code>final</code>, and you’ll have to explicitly mark classes and members with the  <code>open</code>  modifier if required. Kotlin also introduced the  <code>internal</code>  modifier, which restricts accesses to the current module only, while the  <code>private</code>  modifier is now allowed for top-level declarations:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// final public class (default)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// final private class (only visible in the file)</span></span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// final internal class (only visible in the module)</span></span><br><span class="line"><span class="keyword">internal</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// abstract public class</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">D</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// final public class, private constructor</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">E</span> <span class="keyword">private</span> <span class="keyword">constructor</span></span>(<span class="keyword">val</span> a: <span class="built_in">Int</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// sub-classable public class</span></span><br><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">F</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">val</span> a = <span class="number">1</span>           <span class="comment">// private</span></span><br><span class="line">  <span class="keyword">protected</span> <span class="keyword">open</span> <span class="keyword">val</span> b = <span class="number">2</span>    <span class="comment">// overridable protected</span></span><br><span class="line">  <span class="keyword">internal</span> <span class="keyword">val</span> c = <span class="number">3</span>          <span class="comment">// non-overridable, only visible in the module    </span></span><br><span class="line">  <span class="keyword">val</span> d = <span class="number">4</span>                   <span class="comment">// non-overridable public (default)</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// final public method (default)</span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">xyz</span><span class="params">()</span></span> &#123; ... &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// overridable public method</span></span><br><span class="line">  <span class="keyword">open</span> <span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span> &#123; ... &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// final protected method</span></span><br><span class="line">  <span class="keyword">protected</span> <span class="function"><span class="keyword">fun</span> <span class="title">baz</span><span class="params">()</span></span> &#123; ... &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// overridable protected method</span></span><br><span class="line">  <span class="keyword">open</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">()</span></span> &#123; ... &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// private method</span></span><br><span class="line">  <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">qux</span><span class="params">()</span></span> &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// final public subclass</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">F1</span>: <span class="type">F</span></span>() &#123;</span><br><span class="line">  <span class="comment">// a is not visible</span></span><br><span class="line">  <span class="keyword">final</span> <span class="keyword">override</span> <span class="keyword">val</span> b = <span class="number">42</span>     <span class="comment">// locked override (protected)</span></span><br><span class="line">  <span class="comment">// c and d are visible</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">final</span> <span class="keyword">override</span> foo() &#123; ... &#125;  <span class="comment">// final override</span></span><br><span class="line">  <span class="keyword">override</span> bar() &#123; ... &#125;        <span class="comment">// override (protected)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sub-classable public subclass </span></span><br><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">F2</span>: <span class="type">F</span></span>() &#123;</span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">public</span> b = <span class="number">43</span>        <span class="comment">// override, public promoted </span></span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">public</span> bar() &#123; ... &#125; <span class="comment">// override, public promoted </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// access-modifiers are accepted into the primary constructor</span></span><br><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">G</span></span>(<span class="keyword">private</span> <span class="keyword">val</span> a: <span class="built_in">Int</span>, <span class="keyword">protected</span> <span class="keyword">open</span> <span class="keyword">val</span> b: <span class="built_in">Int</span>, </span><br><span class="line">             <span class="keyword">internal</span> <span class="keyword">val</span> c: <span class="built_in">Int</span>, <span class="keyword">val</span> d: <span class="built_in">Int</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Interfaces"><a href="#Interfaces" class="headerlink" title="Interfaces"></a>Interfaces</h2><p>Interfaces in Kotlin can contain abstract properties along with method declarations and implementations:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">  <span class="keyword">val</span> a: <span class="built_in">Int</span>     <span class="comment">// abstract</span></span><br><span class="line">  <span class="keyword">val</span> b: <span class="built_in">Int</span>     <span class="comment">// abstract </span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span>      <span class="comment">// abstract</span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// optionnal body</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">B</span> </span>&#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>: <span class="type">A</span>, <span class="type">B &#123;</span></span></span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">val</span> a: <span class="built_in">Int</span> = <span class="number">42</span></span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">val</span> b: <span class="built_in">Int</span></span><br><span class="line">           <span class="keyword">get</span>() = a + <span class="number">1</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> foo() &#123; ... &#125;</span><br><span class="line">  <span class="keyword">override</span> bar() &#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Thanks to Kotlin’s built-in support for delegation,  a derived class implementing a given interface can delegate all (or some) of its public members to a specified object using the <code>by</code> keyword:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">View</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">click</span><span class="params">()</span></span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">toggle</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewImpl</span>: <span class="type">View &#123;</span></span></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">click</span><span class="params">()</span></span>  &#123; println(<span class="string">"click!"</span>) &#125;</span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">toggle</span><span class="params">()</span></span> &#123; println(<span class="string">"toggle!"</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmptyDelegate</span></span>(view: View): View <span class="keyword">by</span> view</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OverridingDelegate</span></span>(view: View): View <span class="keyword">by</span> view &#123;</span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">click</span><span class="params">()</span></span>  &#123; println(<span class="string">"CLICK!"</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">val</span> v = ViewImpl()</span><br><span class="line">  EmptyDelegate(v).click()</span><br><span class="line">  OverridingDelegate(v).click()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Extension-Properties"><a href="#Extension-Properties" class="headerlink" title="Extension Properties"></a>Extension Properties</h2><p>Similar to extension functions, extension properties provide a way to extend classes using the property syntax instead of the function syntax:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> String.last: <span class="built_in">Char</span>  </span><br><span class="line">    <span class="keyword">get</span>() = <span class="keyword">get</span>(length - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> StringBuilder.last: <span class="built_in">Char</span>  </span><br><span class="line">    <span class="keyword">get</span>() = <span class="keyword">get</span>(length - <span class="number">1</span>)  </span><br><span class="line">    <span class="keyword">set</span>(value: <span class="built_in">Char</span>) &#123;  </span><br><span class="line">      setCharAt(length - <span class="number">1</span>, value)  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Operator-Overloading"><a href="#Operator-Overloading" class="headerlink" title="Operator Overloading"></a>Operator Overloading</h2><p>Kotlin uses convention methods instead of relying on types to define implementations for a predefined set of operators. To implement an operator, you can provide a member function or an extension function. Functions that overload operators need to be marked as  <code>operator</code>:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span></span>(<span class="keyword">val</span> x: <span class="built_in">Double</span>, <span class="keyword">val</span> y: <span class="built_in">Double</span>) &#123;</span><br><span class="line">  <span class="comment">// addition operator</span></span><br><span class="line">  <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">plus</span><span class="params">(other: <span class="type">Point</span>)</span></span>: Point &#123;</span><br><span class="line">    <span class="keyword">return</span> Point(x + other.x, y + other.y)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// overload using Double</span></span><br><span class="line">  <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">plus</span><span class="params">(value: <span class="type">Double</span>)</span></span>: Point &#123;</span><br><span class="line">    <span class="keyword">return</span> Point(x + value, y + value)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// using extension function</span></span><br><span class="line"><span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="built_in">Char</span>.<span class="title">times</span><span class="params">(multiplier: <span class="type">Int</span>)</span></span>: String &#123;</span><br><span class="line">  <span class="keyword">return</span> toString().repeat(multiplier)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="string">'!'</span> * <span class="number">5</span>)  <span class="comment">// "!!!!!"</span></span><br></pre></td></tr></table></figure>
+<p>You’ll find below the list of the predefined operators, excluding  <a href="https://kotlinlang.org/docs/reference/delegated-properties.html#delegated-properties" target="_blank" rel="noopener">delegated properties</a>  operators for brevity:</p>
+<p>╔═══════════════════╦═════════════════════════════════╗<br>║    Expression     ║          Translate to           ║<br>╠═══════════════════╬═════════════════════════════════╣<br>║ a + b             ║ a.plus(b)                       ║<br>║ a - b             ║ a.minus(b)                      ║<br>║ a <em> b             ║ a.times(b)                      ║<br>║ a / b             ║ a.div(b)                        ║<br>║ a % b             ║ a.rem(b)                        ║<br>║ +a                ║ a.unaryPlus()                   ║<br>║ -a                ║ a.unaryMinus()                  ║<br>║ !a                ║ a.not()                         ║<br>║ a++               ║ a.inc()                         ║<br>║ a–               ║ a.dec()                         ║<br>║ a..b              ║ a.rangeTo(b)                    ║<br>║ a in b            ║ b.contains(a)                   ║<br>║ a !in b           ║ !b.contains(a)                  ║<br>║ a[i]              ║ a.get(i)                        ║<br>║ a[i, j]           ║ a.get(i, j)                     ║<br>║ a[i, …, z]      ║ a.get(i, …, z)                ║<br>║ a[i] = b          ║ a.set(i, b)                     ║<br>║ a[i, j] = b       ║ a.set(i, j, b)                  ║<br>║ a[i, …, z] = b  ║ a.set(i, …, z, b)             ║<br>║ a()               ║ a.invoke()                      ║<br>║ a(i)              ║ a.invoke(i)                     ║<br>║ a(i, j)           ║ a.invoke(i, j)                  ║<br>║ a(i, …, z)      ║ a.invoke(i, …, z)             ║<br>║ a+=b              ║ a.plusAssign(b)                 ║<br>║ a-=b              ║ a.minusAssign(b)                ║<br>║ a</em>=b              ║ a.timesAssign(b)                ║<br>║ a/=b              ║ a.divAssign(b)                  ║<br>║ a%=b              ║ a.remAssign(b)                  ║<br>║ a == b            ║ a?.equals(b) ?: (b === null)    ║<br>║ a != b            ║ !(a?.equals(b) ?: (b === null)) ║<br>║ a &gt; b             ║ a.compareTo(b) &gt; 0              ║<br>║ a &lt; b             ║ a.compareTo(b) &lt; 0              ║<br>║ a &gt;= b            ║ a.compareTo(b) &gt;= 0             ║<br>║ a &lt;= b            ║ a.compareTo(b) &lt;= 0             ║<br>║ for(a in b)       ║ b.iterator()                    ║<br>║ val (x, y, z) = a ║ val x = a.component1()          ║<br>║                   ║ val y = a.component2()          ║<br>║                   ║ val z = a.component3()          ║<br>╚═══════════════════╩═════════════════════════════════╝</p>
+<p><img src="https://raw.githubusercontent.com/xmeng1/images/master/images/Xnip2019-11-03_21-37-25.png" alt></p>
+<blockquote>
+<p>Both  <code>inc</code>  and  <code>dec</code>  operators must return a value and shouldn’t mutate the object.</p>
+</blockquote>
+<h2 id="Data-Classes"><a href="#Data-Classes" class="headerlink" title="Data Classes"></a>Data Classes</h2><p>Kotlin provides autogenerated  <code>equals</code>,  <code>hashCode</code>,  <code>toString</code>  and  <code>copy</code>  methods implementations for free by adding the  <code>data</code>  modifier to your class:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">val</span> name: String, <span class="keyword">val</span> age: <span class="built_in">Int</span>)</span><br><span class="line"><span class="keyword">val</span> john = Person(<span class="string">"John"</span>, <span class="number">21</span>)</span><br><span class="line">println(john) <span class="comment">// "Person(name=John, age=21)"</span></span><br><span class="line"><span class="keyword">val</span> bob = john.copy(name=<span class="string">"Bob"</span>)</span><br><span class="line">println(bob)  <span class="comment">// "Person(name=Bob, age=21)"</span></span><br><span class="line">println(bob == bob.copy())  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="Nested-Classes"><a href="#Nested-Classes" class="headerlink" title="Nested Classes"></a>Nested Classes</h2><p>Unlike Java, inner classes in Kotlin don’t have access to the outer class instance, unless explicitly requested by adding the  <code>inner</code>  modifier. Kotlin’s default behavior is equivalent to a  <code>static</code>  nested class in Java, but an outer class doesn’t see  <code>private</code>  members of its inner (or nested) classes:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">  <span class="comment">// nested class (equivalent to static in Java)</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">    <span class="comment">// A can't see private members of nested classes</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> invisible = <span class="number">42</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// inner class</span></span><br><span class="line">  <span class="keyword">inner</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> </span>&#123;</span><br><span class="line">    <span class="comment">// A can't see private members of inner classes</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">invisible</span><span class="params">()</span></span> = <span class="number">42</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> b = A.B()</span><br><span class="line"><span class="keyword">val</span> c = A().C()</span><br></pre></td></tr></table></figure>
+<h2 id="Sealed-Classes"><a href="#Sealed-Classes" class="headerlink" title="Sealed Classes"></a>Sealed Classes</h2><p>Sealed classes are used to represent restricted class hierarchy: a <code>sealed</code> class can have subclasses, but all of them must be declared in the same file as the <code>sealed</code> class itself:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sealed</span> <span class="class"><span class="keyword">class</span> <span class="title">Expr</span></span></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Const</span></span>(<span class="keyword">val</span> number: <span class="built_in">Double</span>) : Expr()</span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Sum</span></span>(<span class="keyword">val</span> e1: Expr, <span class="keyword">val</span> e2: Expr) : Expr()</span><br></pre></td></tr></table></figure>
+<p>A sealed class is  <a href="https://kotlinlang.org/docs/reference/classes.html#abstract-classes" target="_blank" rel="noopener">abstract</a>  by itself, it cannot be instantiated directly and can have abstract members.</p>
+<blockquote>
+<p>Classes which extend subclasses of a sealed class (indirect inheritors) can be placed anywhere, not necessarily in the same file.</p>
+</blockquote>
+<h2 id="The-object-keyword"><a href="#The-object-keyword" class="headerlink" title="The object keyword"></a>The object keyword</h2><p>The  <code>object</code>  keyword defines a class and creates an instance of that class at the same time. The singleton pattern comes immediately in mind as a use case:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// object class as a singleton</span></span><br><span class="line"><span class="keyword">object</span> Log &#123;</span><br><span class="line">  <span class="keyword">val</span> prop = <span class="number">42</span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">debug</span><span class="params">(msg: <span class="type">String</span>)</span></span> &#123; ... &#125;</span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">info</span><span class="params">(msg: <span class="type">String</span>)</span></span> &#123; ... &#125;</span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">warn</span><span class="params">(msg: <span class="type">String</span>)</span></span> &#123; ... &#125;</span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">error</span><span class="params">(msg: <span class="type">String</span>)</span></span> &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// object classes can inherit from classes and interfaces</span></span><br><span class="line"><span class="keyword">object</span> DirectExecutor: Executor &#123;</span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">execute</span><span class="params">(r: <span class="type">Runnable</span>)</span></span> = r.run()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DirectExecutor.execute( runnable &#123; </span><br><span class="line">  Log.debug(<span class="string">"executing..."</span>) </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Anonymous objects replace Java’s anonymous inner classes but, unlike Java, they can implement multiple interfaces:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> listener = <span class="keyword">object</span>: OnMenuClickListener, OnMenuExpandListener &#123;</span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onMenuClick</span><span class="params">(item: <span class="type">Menu</span>)</span></span>  &#123; ... &#125;</span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onMenuExpand</span><span class="params">(item: <span class="type">Menu</span>)</span></span> &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">menu.setOnClickListener(listener)</span><br><span class="line">menu.setOnExpandListener(listener)</span><br></pre></td></tr></table></figure>
+<p>Classes in Kotlin can’t have  <code>static</code>  members since there’s no such keyword in the Kotlin language. Instead, top-level and object declarations are recommended but if you need to access private members of an outer class,  <a href="https://kotlinlang.org/docs/reference/object-declarations.html#companion-objects" target="_blank" rel="noopener"><em>companion objects</em></a>  are the way to go:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">private</span> <span class="keyword">constructor</span></span>(<span class="keyword">val</span> name: String, <span class="keyword">val</span> age: <span class="built_in">Int</span>) &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">companion</span> <span class="keyword">object</span> Factory &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">create</span><span class="params">(name: <span class="type">String</span>, age: <span class="type">Int</span>)</span></span> = Person(name, age)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// members of the companion object can be called using the class name as qualifier</span></span><br><span class="line"><span class="keyword">val</span> bob = Person.create(<span class="string">"Bob"</span>, <span class="number">21</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// the name of the class acts as a reference to the companion object</span></span><br><span class="line"><span class="keyword">val</span> factory = Person </span><br><span class="line"><span class="comment">// equivalent to:</span></span><br><span class="line"><span class="keyword">val</span> factory = Person.Factory</span><br></pre></td></tr></table></figure>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>There are still quite a few unexplored corners like  <a href="http://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html" target="_blank" rel="noopener">coroutines</a>,  <a href="http://kotlinlang.org/docs/reference/generics.html" target="_blank" rel="noopener">generics</a>  or  <a href="http://kotlinlang.org/docs/reference/java-to-kotlin-interop.html" target="_blank" rel="noopener">java interoperability</a>  but, if you come that far, you should be ready to switch to Kotlin.</p>
+<p>Do not forget to dive into the  <a href="https://play.kotlinlang.org/koans/overview" target="_blank" rel="noopener">Koans exercises</a>  to practice what you learned, while keeping a hand at the  <a href="http://kotlinlang.org/docs/reference/" target="_blank" rel="noopener">official documentation</a>. You can also write and execute Kotlin’s snippets  <a href="https://play.kotlinlang.org/" target="_blank" rel="noopener">online</a>!</p>
+<p>That guide will be updated over time and suggestions, so do not hesitate to follow me? Thanks for reading!</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/29/GitLab-OpenProject-Integration-Rebase-Conflict-Resolve/" rel="next" title="GitLab OpenProject Integration Rebase Conflict Resolve">
+                <i class="fa fa-chevron-left"></i> GitLab OpenProject Integration Rebase Conflict Resolve
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/01/Git_Squash_Rebase_by_Intellij/" rel="prev" title="Squash Rebase PR Git Workflow by Intellij and Command">
+                Squash Rebase PR Git Workflow by Intellij and Command <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar-2.jpg" alt="Xin Meng">
+            
+              <p class="site-author-name" itemprop="name">Xin Meng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/xmeng1" title="GitHub &rarr; https://github.com/xmeng1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/xinmeng_1" title="Twitter &rarr; https://twitter.com/xinmeng_1" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://stackoverflow.com/users/2000468/xin-meng" title="StackOverflow &rarr; https://stackoverflow.com/users/2000468/xin-meng" rel="noopener" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Packages"><span class="nav-number">1.</span> <span class="nav-text">Packages</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Variables"><span class="nav-number">2.</span> <span class="nav-text">Variables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Equality"><span class="nav-number">3.</span> <span class="nav-text">Equality</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Null-Safety"><span class="nav-number">4.</span> <span class="nav-text">Null Safety</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String-Templates"><span class="nav-number">5.</span> <span class="nav-text">String Templates</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Primitive-Types"><span class="nav-number">6.</span> <span class="nav-text">Primitive Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Arrays"><span class="nav-number">7.</span> <span class="nav-text">Arrays</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Enum"><span class="nav-number">8.</span> <span class="nav-text">Enum</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Root-Type"><span class="nav-number">9.</span> <span class="nav-text">Root Type</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Type-Casts"><span class="nav-number">10.</span> <span class="nav-text">Type Casts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Iterating"><span class="nav-number">11.</span> <span class="nav-text">Iterating</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Functions"><span class="nav-number">12.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Extension-Functions"><span class="nav-number">13.</span> <span class="nav-text">Extension Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Infix-Functions"><span class="nav-number">14.</span> <span class="nav-text">Infix Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lambdas"><span class="nav-number">15.</span> <span class="nav-text">Lambdas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Inline-Functions"><span class="nav-number">16.</span> <span class="nav-text">Inline Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#When"><span class="nav-number">17.</span> <span class="nav-text">When</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Exceptions"><span class="nav-number">18.</span> <span class="nav-text">Exceptions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Classes"><span class="nav-number">19.</span> <span class="nav-text">Classes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Constructors"><span class="nav-number">19.1.</span> <span class="nav-text">Constructors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inheritance"><span class="nav-number">19.2.</span> <span class="nav-text">Inheritance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Properties"><span class="nav-number">19.3.</span> <span class="nav-text">Properties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Access-Modifiers"><span class="nav-number">19.4.</span> <span class="nav-text">Access Modifiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interfaces"><span class="nav-number">19.5.</span> <span class="nav-text">Interfaces</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extension-Properties"><span class="nav-number">19.6.</span> <span class="nav-text">Extension Properties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operator-Overloading"><span class="nav-number">19.7.</span> <span class="nav-text">Operator Overloading</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Classes"><span class="nav-number">19.8.</span> <span class="nav-text">Data Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nested-Classes"><span class="nav-number">19.9.</span> <span class="nav-text">Nested Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sealed-Classes"><span class="nav-number">19.10.</span> <span class="nav-text">Sealed Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-object-keyword"><span class="nav-number">19.11.</span> <span class="nav-text">The object keyword</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion"><span class="nav-number">20.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xin Meng</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.1"></script>
+
+
+  
+  
+  
+  <script id="dsq-count-scr" src="https://mengxin.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.mengxin.science/2019/11/03/Kotlin_Quick_Reference_For_Java.md/";
+    this.page.identifier = "2019/11/03/Kotlin_Quick_Reference_For_Java.md/";
+    this.page.title = 'Kotlin Quick Reference for Java Developer';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mengxin.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/instantsearch.js@2/dist/instantsearch.min.css">
+
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/npm/instantsearch.js@2/dist/instantsearch.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=7.0.1"></script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+  <script>
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 17196,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      
+        background-color: #eee;
+        background-image: linear-gradient(#fcfcfc, #eee);
+        border: 1px solid #d5d5d5;
+        border-radius: 3px;
+      
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      
+        right: 4px;
+        top: 8px;
+      
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1;
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; // Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.readOnly = true;
+        ta.value = code;
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, code.length);
+        ta.readOnly = false;
+        var result = document.execCommand('copy');
+        
+        ta.blur(); // For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+</body>
+</html>
